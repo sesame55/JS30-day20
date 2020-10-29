@@ -19,8 +19,9 @@ recognition.addEventListener('result', e => {
         .map(result => result.transcript)
         .join('');
 
-    // 把這些發音套換成shit圖示，注意要使用 recognition.lang = 'en-US';才能正確輸入
+    // 把這些發音套換成圖示，注意要使用 recognition.lang = 'en-US';才能正確輸入
     const poopScript = transcript.replace(/poop|poo|shit|dump/gi, '😏');
+    // 如果要把這些發音換成中文也OK
 
     // 輸出文字
     p.textContent = poopScript;
@@ -36,6 +37,7 @@ recognition.addEventListener('soundend', e => {
     console.log(e);
 });
 
+// 應該是避免出現錯誤?
 recognition.addEventListener('end', recognition.start);
 
-recognition.start();
+recognition.start();//開始接收音訊輸入
